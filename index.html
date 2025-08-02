@@ -2,145 +2,237 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jimena Barrantes | Senior Agile Digital Project Manager Portfolio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jimena Barrantes | Agile PM Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #2c3e50;
+      --accent-color: #3498db;
+      --bg-color: #f4f6f8;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg-color);
+      color: var(--main-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    nav {
+      background-color: var(--accent-color);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav button {
+      background: none;
+      color: white;
+      border: none;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-weight: bold;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .container {
+      padding: 2rem;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .edit-button {
+      margin-top: 1rem;
+      float: right;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      margin-top: 1rem;
+      font-family: var(--font);
+      padding: 1rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background: #ddd;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
-  <header class="bg-white shadow-md p-6 text-center">
-    <h1 class="text-3xl font-bold">Jimena Barrantes</h1>
-    <p>Senior Agile Digital Project Manager | Scrum Master | Product Owner</p>
-    <p>Heredia, Costa Rica | +506 7149 1877 | <a href="mailto:aj.balop@gmail.com" class="text-blue-600">aj.balop@gmail.com</a></p>
-    <p><a href="https://linkedin.com/in/ajbalop" class="text-blue-600" target="_blank">LinkedIn: ajbalop</a></p>
+<body>
+  <header>
+    <h1>Jimena Barrantes | Agile PM Portfolio</h1>
+    <p>Heredia, Costa Rica | +506 7149 1877 | aj.balop@gmail.com</p>
+    <p><a href="https://linkedin.com/in/ajbalop" target="_blank" style="color:white;">LinkedIn Profile</a></p>
   </header>
 
-  <main class="max-w-5xl mx-auto p-6">
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold border-b pb-2">Professional Summary</h2>
-      <p>
-        Senior Agile Digital Project Manager, Scrum Master, and Product Owner with 16+ years of global experience across Finance, Healthcare, and IT. Expert in Agile (Scrum, SAFe, Kanban), Waterfall, Hybrid methodologies, AI-Cloud prompt engineering, and CMS platforms including Liferay, Salesforce CMS, and WordPress. Proven success in enterprise transformations, Agile team coaching, and delivering initiatives that improve delivery by 50%, increase business value by 40%, and boost team engagement. Skilled in stakeholder alignment, risk management, and agile coaching using tools like JIRA, Confluence, Azure DevOps, and ServiceNow.
-      </p>
+  <nav id="tabs">
+    <button class="active" onclick="openTab('about')">About Me</button>
+    <button onclick="openTab('summary')">Professional Summary</button>
+    <button onclick="openTab('education')">Education</button>
+    <button onclick="openTab('certifications')">Certifications</button>
+    <button onclick="openTab('skills')">Skills</button>
+    <button onclick="openTab('languages')">Languages</button>
+    <button onclick="openTab('extra')">Additional Experience</button>
+  </nav>
+
+  <div class="container">
+    <section id="about" class="active">
+      <div id="aboutContent">
+        <p>Senior Agile Digital Project Manager / Coach, Scrum Master, and Product Owner with 16+ years of global experience across Finance, Healthcare, and IT sectors...</p>
+        <!-- You can paste your full About Me content here -->
+      </div>
+      <button class="edit-button" onclick="editSection('aboutContent')">Edit</button>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold border-b pb-2">Professional Experience</h2>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">iTree Training – Senior Project Agile Manager / Agile Coach (Global)</h3>
-        <p class="italic">April 2020 – Present</p>
-        <ul class="list-disc list-inside">
-          <li>Led Coca-Cola’s iRed Global Solution project, impacting over 50% of bottlers in Mexico.</li>
-          <li>Improved delivery output by 50% and team satisfaction by 65%.</li>
-          <li>Drove Salesforce CMS enhancements and multi-country programs for Nissan.</li>
-        </ul>
+    <section id="summary">
+      <div id="summaryContent">
+        <p> <!-- Paste Professional Summary (job history) here --> </p>
       </div>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">Infinite Computer Solutions – Senior Scrum Master (Healthcare)</h3>
-        <p class="italic">April 2022 – December 2024</p>
-        <ul class="list-disc list-inside">
-          <li>Reduced onboarding/offboarding by 60% via SharePoint automation.</li>
-          <li>Coached Agile teams and supported ART launches.</li>
-        </ul>
-      </div>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">Coca-Cola LATAM – Business Relationship Analyst / Product Owner</h3>
-        <p class="italic">November 2018 – April 2022 | Brazil</p>
-        <ul class="list-disc list-inside">
-          <li>Rolled out iRed Global Solution; boosted sales by 37% via CMS upgrades.</li>
-          <li>Defined Agile standards in 4 countries; coached 5 POs.</li>
-        </ul>
-      </div>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">Equifax – Project Manager / Scrum Master</h3>
-        <p class="italic">August 2017 – November 2018</p>
-        <ul class="list-disc list-inside">
-          <li>Launched multilingual Liferay site; boosted engagement by 30%.</li>
-          <li>Implemented Agile metrics and improved velocity by 20%.</li>
-        </ul>
-      </div>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">GBM (IBM Latin America) – Junior Project Manager</h3>
-        <p class="italic">December 2014 – July 2017</p>
-        <ul class="list-disc list-inside">
-          <li>Delivered 15+ IBM IT-Smart solutions; increased efficiency by 20%.</li>
-        </ul>
-      </div>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">McKinsey & Company – Data Engineer (Global)</h3>
-        <p class="italic">November 2013 – November 2014</p>
-        <ul class="list-disc list-inside">
-          <li>Enabled 80% increase in win rate through 100% data accuracy.</li>
-        </ul>
-      </div>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">Hewlett Packard – Incident Manager / Support Engineer</h3>
-        <p class="italic">2006–2008; 2011–2012</p>
-        <ul class="list-disc list-inside">
-          <li>Achieved 95% SLA compliance; improved uptime by 35%.</li>
-        </ul>
-      </div>
-      <div class="mb-4">
-        <h3 class="font-bold text-lg">Bac Credomatic Bank – Regional Support Technician</h3>
-        <p class="italic">December 2008 – March 2011</p>
-        <ul class="list-disc list-inside">
-          <li>Reduced escalations by 25%; maintained 99% system uptime.</li>
-        </ul>
-      </div>
+      <button class="edit-button" onclick="editSection('summaryContent')">Edit</button>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold border-b pb-2">Education</h2>
-      <ul class="list-disc list-inside">
-        <li>MBA, Master Cum Laude – SL Business School, Spain, 2021</li>
-        <li>Master in Project Management – SL Business School, Spain, 2021</li>
-        <li>Bachelor’s in Computer Science – Universidad Hispanoamericana, Costa Rica, 2010</li>
-        <li>Technical HS in Accounting – Colegio Monseñor Sanabria, Costa Rica, 2006</li>
-      </ul>
+    <section id="education">
+      <div id="educationContent">
+        <ul>
+          <li>MBA, Master Cum Laude – SL Business School, Spain, 2021</li>
+          <li>Master in Project Management, Master Cum Laude – SL Business School, Spain, 2021</li>
+          <li>Bachelor’s in Computer Science – Universidad Hispanoamericana, Costa Rica, 2010</li>
+          <li>Technical High School in Accounting – Colegio Monseñor Sanabria, 2006</li>
+        </ul>
+      </div>
+      <button class="edit-button" onclick="editSection('educationContent')">Edit</button>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold border-b pb-2">Certifications</h2>
-      <ul class="list-disc list-inside">
-        <li>Project Management Professional (PMP)</li>
-        <li>PMI Agile Certified Practitioner (PMI-ACP)</li>
-        <li>Scrum Master Certified (SMC)</li>
-        <li>Product Owner Certified (SPOC)</li>
-        <li>ITIL v3, Six Sigma Yellow & Black Belt</li>
-        <li>Design Thinking – University of Sydney</li>
-      </ul>
+    <section id="certifications">
+      <div id="certificationsContent">
+        <ul>
+          <li>PMP, PMI-ACP, SMC, SPOC</li>
+          <li>ITIL v3, Six Sigma Black Belt, Yellow Belt</li>
+          <li>Design Thinking, VMware vSphere, IBM Bluemix</li>
+        </ul>
+      </div>
+      <button class="edit-button" onclick="editSection('certificationsContent')">Edit</button>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold border-b pb-2">Technical Skills</h2>
-      <ul class="list-disc list-inside">
-        <li><strong>Agile & Project Delivery:</strong> Scrum, SAFe, Kanban, PI Planning, Agile Coaching</li>
-        <li><strong>CMS:</strong> Liferay, WordPress, Salesforce CMS, SharePoint</li>
-        <li><strong>Cloud & Tools:</strong> AWS, IBM Cloud, Jira, Confluence, Azure DevOps</li>
-        <li><strong>DevOps:</strong> GitHub, Kubernetes, Unix, Linux, AIX</li>
-        <li><strong>Soft Skills:</strong> Leadership, Coaching, KPI Reporting, Communication</li>
-      </ul>
+    <section id="skills">
+      <div id="skillsContent">
+        <ul>
+          <li>Agile, Scrum, Kanban, SAFe, Value Stream Mapping</li>
+          <li>Liferay, WordPress, Salesforce CMS</li>
+          <li>JIRA, Confluence, Azure DevOps, ServiceNow</li>
+          <li>GitHub, AWS, Kubernetes, AIX, Unix, Linux</li>
+        </ul>
+      </div>
+      <button class="edit-button" onclick="editSection('skillsContent')">Edit</button>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold border-b pb-2">Languages</h2>
-      <ul class="list-disc list-inside">
-        <li>Spanish: Native</li>
-        <li>English: Bilingual (C2)</li>
-        <li>Portuguese: Conversational</li>
-      </ul>
+    <section id="languages">
+      <div id="languagesContent">
+        <p>Spanish (Native) | English (C2) | Portuguese (Conversational)</p>
+      </div>
+      <button class="edit-button" onclick="editSection('languagesContent')">Edit</button>
     </section>
 
-    <section>
-      <h2 class="text-2xl font-semibold border-b pb-2">Additional Experience</h2>
-      <ul class="list-disc list-inside">
-        <li>Trainer at LearnQuest and SWAT Consulting</li>
-        <li>Specialized in AI Prompt Engineering, Cybersecurity, HEDIS, SEO, Google Analytics</li>
-      </ul>
+    <section id="extra">
+      <div id="extraContent">
+        <p>Trainer at LearnQuest and SWAT Consulting Services.<br>Specialized in AI Prompt Engineering, HEDIS Care Management, Cybersecurity, SEO, and Google Analytics.</p>
+      </div>
+      <button class="edit-button" onclick="editSection('extraContent')">Edit</button>
     </section>
-  </main>
+  </div>
 
-  <footer class="text-center text-sm text-gray-500 py-4">
+  <div class="footer">
     © 2025 Jimena Barrantes. All rights reserved.
-  </footer>
+  </div>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function editSection(sectionId) {
+      const password = prompt("Admin password:");
+      if (password !== "your_password_here") {
+        alert("Unauthorized access.");
+        return;
+      }
+
+      const div = document.getElementById(sectionId);
+      const original = div.innerHTML;
+      const textArea = document.createElement("textarea");
+      textArea.value = div.innerHTML.replace(/<[^>]+>/g, "");
+      const saveBtn = document.createElement("button");
+      saveBtn.innerText = "Save";
+      saveBtn.className = "edit-button";
+      saveBtn.onclick = () => {
+        div.innerHTML = textArea.value;
+        saveBtn.remove();
+      };
+
+      div.innerHTML = "";
+      div.appendChild(textArea);
+      div.parentNode.appendChild(saveBtn);
+    }
+  </script>
 </body>
 </html>
