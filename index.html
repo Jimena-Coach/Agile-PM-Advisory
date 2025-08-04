@@ -98,6 +98,22 @@
       font-size: 0.9rem;
     }
 
+    .download-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--main-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-button:hover {
+      background-color: var(--accent-color);
+    }
+
     textarea {
       width: 100%;
       height: 300px;
@@ -137,12 +153,13 @@
         <p>Senior Agile Digital Project Manager / Coach, Scrum Master, and Product Owner with 16+ years of global experience across Finance, Healthcare, and IT sectors...</p>
         <!-- You can paste your full About Me content here -->
       </div>
+      <a href="Jimena_Barrantes_Resume.pdf" download class="download-button">Download Resume (PDF)</a>
       <button class="edit-button" onclick="editSection('aboutContent')">Edit</button>
     </section>
 
     <section id="summary">
       <div id="summaryContent">
-        <p> <!-- Paste Professional Summary (job history) here --> </p>
+        <p><!-- Paste Professional Summary (job history) here --></p>
       </div>
       <button class="edit-button" onclick="editSection('summaryContent')">Edit</button>
     </section>
@@ -212,7 +229,7 @@
 
     function editSection(sectionId) {
       const password = prompt("Admin password:");
-      if (password !== "graciasDios@@") {
+      if (password !== "your_password_here") {
         alert("Unauthorized access.");
         return;
       }
