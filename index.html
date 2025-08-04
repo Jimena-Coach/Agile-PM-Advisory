@@ -86,7 +86,8 @@
       display: block;
     }
 
-    .edit-button {
+    .edit-button,
+    .download-button {
       margin-top: 1rem;
       float: right;
       background-color: var(--accent-color);
@@ -96,22 +97,7 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 0.9rem;
-    }
-
-    .download-button {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      background-color: var(--main-color);
-      color: white;
       text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .download-button:hover {
-      background-color: var(--accent-color);
     }
 
     textarea {
@@ -127,6 +113,7 @@
       padding: 1rem;
       background: #ddd;
       font-size: 0.9rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -151,15 +138,15 @@
     <section id="about" class="active">
       <div id="aboutContent">
         <p>Senior Agile Digital Project Manager / Coach, Scrum Master, and Product Owner with 16+ years of global experience across Finance, Healthcare, and IT sectors...</p>
-        <!-- You can paste your full About Me content here -->
       </div>
-      <a href="Jimena_Barrantes_Resume.pdf" download class="download-button">Download Resume (PDF)</a>
+      <a class="download-button" href="Jimena_Barrantes_Resume.pdf" download>Download Resume</a>
+      <a href="#" onclick="downloadEdits()" class="download-button" style="margin-right: 10px;">Download Edits</a>
       <button class="edit-button" onclick="editSection('aboutContent')">Edit</button>
     </section>
 
     <section id="summary">
       <div id="summaryContent">
-        <p><!-- Paste Professional Summary (job history) here --></p>
+        <p> <!-- Paste Professional Summary (job history) here --> </p>
       </div>
       <button class="edit-button" onclick="editSection('summaryContent')">Edit</button>
     </section>
@@ -222,7 +209,6 @@
     function openTab(tabId) {
       document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
     }
@@ -237,18 +223,50 @@
       const div = document.getElementById(sectionId);
       const original = div.innerHTML;
       const textArea = document.createElement("textarea");
-      textArea.value = div.innerHTML.replace(/<[^>]+>/g, "");
+      textArea.value = div.innerText.trim();
       const saveBtn = document.createElement("button");
       saveBtn.innerText = "Save";
       saveBtn.className = "edit-button";
       saveBtn.onclick = () => {
-        div.innerHTML = textArea.value;
+        div.innerHTML = textArea.value.replace(/\n/g, "<br>");
         saveBtn.remove();
       };
 
       div.innerHTML = "";
       div.appendChild(textArea);
       div.parentNode.appendChild(saveBtn);
+    }
+
+    function downloadEdits() {
+      const sections = [
+        'aboutContent',
+        'summaryContent',
+        'educationContent',
+        'certificationsContent',
+        'skillsContent',
+        'languagesContent',
+        'extraContent'
+      ];
+
+      let content = 'Jimena Barrantes Portfolio Edits\n\n';
+
+      sections.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          const sectionTitle = id.replace('Content', '').toUpperCase();
+          const text = element.innerText.trim();
+          content += `=== ${sectionTitle} ===\n${text}\n\n`;
+        }
+      });
+
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Jimena_Edits.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   </script>
 </body>
